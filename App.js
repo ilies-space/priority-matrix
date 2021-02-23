@@ -61,6 +61,16 @@ export default function App() {
             <TouchableOpacity
               onPress={() => {
                 console.log('add new element');
+                setImportantAndUrgent((prevList) => {
+                  return [
+                    {
+                      title: 'Task from user',
+                      description:
+                        'Occaecat ea tempor consequat magna nulla quis aliquip proident tempor do laborum deserunt.',
+                    },
+                    ...prevList,
+                  ];
+                });
               }}>
               <Text
                 style={{
