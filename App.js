@@ -13,9 +13,13 @@ export default function App() {
   const [ImportantAndUrgent, setImportantAndUrgent] = useState([
     {
       title: 'task exmple',
+      description:
+        'Minim laborum esse anim nostrud deserunt eiusmod mollit magna non occaecat eu deserunt elit.',
     },
     {
       title: 'task exmple2',
+      description:
+        '2 Minim laborum esse anim nostrud deserunt eiusmod mollit magna non occaecat eu deserunt elit.',
     },
   ]);
   const [ImportantButNotUrgent, setImportantButNotUrgent] = useState([]);
@@ -79,23 +83,19 @@ export default function App() {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    Alert.alert(
-                      item.title,
-                      'Nostrud esse ullamco labore sunt proident voluptate cillum dolore voluptate officia excepteur consequat consequat.',
-                      [
-                        {
-                          text: 'cancel',
+                    Alert.alert(item.title, item.description, [
+                      {
+                        text: 'cancel',
+                      },
+                      {
+                        text: 'delete',
+                        onPress: () => {
+                          setImportantAndUrgent((prevList) => {
+                            return prevList.filter((elm) => elm != item);
+                          });
                         },
-                        {
-                          text: 'delete',
-                          onPress: () => {
-                            setImportantAndUrgent((prevList) => {
-                              return prevList.filter((elm) => elm != item);
-                            });
-                          },
-                        },
-                      ],
-                    );
+                      },
+                    ]);
                   }}
                   style={{
                     padding: 5,
