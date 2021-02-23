@@ -12,6 +12,8 @@ import AddElement from '../Componenets/AddElement';
 import {
   AddToImportantAndUrgent,
   DeleteFromImportantAndUrgent,
+  AddToImportantButNotUrgent,
+  DeleteFromImportantButNotUrgent,
 } from '../Redux/ListsReducer';
 
 export default function Home() {
@@ -19,10 +21,7 @@ export default function Home() {
   var ListsReducer = useSelector((state) => state.ListsReducer);
   // variables  :
   // -------------- Lists
-  const [ImportantAndUrgent, setImportantAndUrgent] = useState(
-    ListsReducer.ImportantAndUrgent,
-  );
-  const [ImportantButNotUrgent, setImportantButNotUrgent] = useState([]);
+
   const [NotImportantButUrgent, setNotImportantButUrgent] = useState([]);
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
   // --------------  Components
@@ -31,11 +30,6 @@ export default function Home() {
   const [selectedList, setselectedList] = useState('ImportantAndUrgent');
   const dispatch = useDispatch();
   const [refresh, setrefresh] = useState(0);
-  // listen to valeus changes
-  // useEffect(() => {
-  //   console.log('change ...........');
-  //   setImportantAndUrgent(ListsReducer.ImportantAndUrgent);
-  // }, [ListsReducer.ImportantAndUrgent]);
   // Functions
   function addToImportantAndUrgent(newElement) {
     switch (selectedList) {
@@ -45,13 +39,14 @@ export default function Home() {
           newItem: newElement,
         });
         setrefresh(refresh + 1);
-        // setImportantAndUrgent(ListsReducer.ImportantAndUrgent);
-
         break;
+
       case 'ImportantButNotUrgent':
-        setImportantButNotUrgent((prevList) => {
-          return [newElement, ...prevList];
+        dispatch({
+          type: AddToImportantButNotUrgent,
+          newItem: newElement,
         });
+        setrefresh(refresh + 1);
         break;
       case 'NotImportantButUrgent':
         setNotImportantButUrgent((prevList) => {
@@ -145,14 +140,6 @@ export default function Home() {
                             selectedItem: item,
                           });
                           setrefresh(refresh + 1);
-
-                          // setImportantAndUrgent(
-                          //   ListsReducer.ImportantAndUrgent,
-                          // );
-
-                          // setImportantAndUrgent((prevList) => {
-                          //   return prevList.filter((elm) => elm != item);
-                          // });
                         },
                       },
                     ]);
@@ -219,7 +206,7 @@ export default function Home() {
           </View>
           {/* List of items  */}
           <FlatList
-            data={ImportantButNotUrgent}
+            data={ListsReducer.ImportantButNotUrgent}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => {
               return (
@@ -232,9 +219,11 @@ export default function Home() {
                       {
                         text: 'delete',
                         onPress: () => {
-                          setImportantButNotUrgent((prevList) => {
-                            return prevList.filter((elm) => elm != item);
+                          dispatch({
+                            type: DeleteFromImportantButNotUrgent,
+                            selectedItem: item,
                           });
+                          setrefresh(refresh + 1);
                         },
                       },
                     ]);
