@@ -24,20 +24,58 @@ export default function AddElement({
         }}
       />
       <View style={{backgroundColor: 'white'}}>
+        <View
+          style={{
+            padding: 10,
+          }}>
+          <Text
+            style={{
+              fontWeight: 'bold',
+            }}>
+            New Item
+          </Text>
+        </View>
+
+        <Text
+          style={{
+            color: 'gray',
+            marginHorizontal: 10,
+          }}>
+          Title*
+        </Text>
         <TextInput
+          style={{
+            borderWidth: 1,
+            margin: 10,
+            padding: 10,
+          }}
           autoFocus
           value={Title}
           onChangeText={(input) => {
             setTitle(input);
           }}
-          placeholder={'TITLE'}
+          placeholder={'E.g., "Setup meeting with my project manager"'}
         />
+        <Text
+          style={{
+            color: 'gray',
+            marginHorizontal: 10,
+          }}>
+          Notes
+        </Text>
         <TextInput
+          style={{
+            borderWidth: 1,
+            margin: 10,
+            padding: 10,
+          }}
           value={description}
           onChangeText={(input) => {
             setdescription(input);
           }}
-          placeholder={'Description'}
+          placeholder={
+            'Description or any informations related to this task ...'
+          }
         />
 
         {/* Command  */}
