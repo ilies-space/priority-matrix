@@ -30,7 +30,7 @@ export default function Home() {
   // --------------  handlers
   const [selectedList, setselectedList] = useState('ImportantAndUrgent');
   const dispatch = useDispatch();
-  const [reresh, setreresh] = useState(0);
+  const [refresh, setrefresh] = useState(0);
   // listen to valeus changes
   // useEffect(() => {
   //   console.log('change ...........');
@@ -44,7 +44,7 @@ export default function Home() {
           type: AddToImportantAndUrgent,
           newItem: newElement,
         });
-        setreresh(1);
+        setrefresh(refresh + 1);
         // setImportantAndUrgent(ListsReducer.ImportantAndUrgent);
 
         break;
@@ -144,7 +144,7 @@ export default function Home() {
                             type: DeleteFromImportantAndUrgent,
                             selectedItem: item,
                           });
-                          setreresh(1);
+                          setrefresh(refresh + 1);
 
                           // setImportantAndUrgent(
                           //   ListsReducer.ImportantAndUrgent,
