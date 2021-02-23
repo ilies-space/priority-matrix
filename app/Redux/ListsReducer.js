@@ -20,6 +20,7 @@ const ListsReducer = (state = initialState, action) => {
     // ----------
 
     case DeleteFromImportantAndUrgent:
+      console.log(DeleteFromImportantAndUrgent);
       state.ImportantAndUrgent = state.ImportantAndUrgent.filter((element) => {
         return element !== action.selectedItem;
       });

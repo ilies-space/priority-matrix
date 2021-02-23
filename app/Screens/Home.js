@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -7,12 +7,21 @@ import {
   Button,
   Alert,
 } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import AddElement from '../Componenets/AddElement';
+import {
+  AddToImportantAndUrgent,
+  DeleteFromImportantAndUrgent,
+} from '../Redux/ListsReducer';
 
 export default function Home() {
+  // reduxValues
+  var ListsReducer = useSelector((state) => state.ListsReducer);
   // variables  :
   // -------------- Lists
-  const [ImportantAndUrgent, setImportantAndUrgent] = useState([]);
+  const [ImportantAndUrgent, setImportantAndUrgent] = useState(
+    ListsReducer.ImportantAndUrgent,
+  );
   const [ImportantButNotUrgent, setImportantButNotUrgent] = useState([]);
   const [NotImportantButUrgent, setNotImportantButUrgent] = useState([]);
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
@@ -20,14 +29,24 @@ export default function Home() {
   const [addElementDialog, setaddElementDialog] = useState(false);
   // --------------  handlers
   const [selectedList, setselectedList] = useState('ImportantAndUrgent');
-
+  const dispatch = useDispatch();
+  const [reresh, setreresh] = useState(0);
+  // listen to valeus changes
+  // useEffect(() => {
+  //   console.log('change ...........');
+  //   setImportantAndUrgent(ListsReducer.ImportantAndUrgent);
+  // }, [ListsReducer.ImportantAndUrgent]);
   // Functions
   function addToImportantAndUrgent(newElement) {
     switch (selectedList) {
       case 'ImportantAndUrgent':
-        setImportantAndUrgent((prevList) => {
-          return [newElement, ...prevList];
+        dispatch({
+          type: AddToImportantAndUrgent,
+          newItem: newElement,
         });
+        setreresh(1);
+        // setImportantAndUrgent(ListsReducer.ImportantAndUrgent);
+
         break;
       case 'ImportantButNotUrgent':
         setImportantButNotUrgent((prevList) => {
@@ -54,6 +73,12 @@ export default function Home() {
         backgroundColor: '#ecf0f1',
         margin: 4,
       }}>
+      <Button
+        title={'test'}
+        onPress={() => {
+          console.log('TEST', ListsReducer);
+        }}
+      />
       {/* TOP -  */}
       <View
         style={{
@@ -102,7 +127,7 @@ export default function Home() {
           </View>
           {/* List of items  */}
           <FlatList
-            data={ImportantAndUrgent}
+            data={ListsReducer.ImportantAndUrgent}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => {
               return (
@@ -115,9 +140,19 @@ export default function Home() {
                       {
                         text: 'delete',
                         onPress: () => {
-                          setImportantAndUrgent((prevList) => {
-                            return prevList.filter((elm) => elm != item);
+                          dispatch({
+                            type: DeleteFromImportantAndUrgent,
+                            selectedItem: item,
                           });
+                          setreresh(1);
+
+                          // setImportantAndUrgent(
+                          //   ListsReducer.ImportantAndUrgent,
+                          // );
+
+                          // setImportantAndUrgent((prevList) => {
+                          //   return prevList.filter((elm) => elm != item);
+                          // });
                         },
                       },
                     ]);
