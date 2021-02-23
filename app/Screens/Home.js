@@ -211,12 +211,76 @@ export default function Home() {
           backgroundColor: 'red',
           flexDirection: 'row',
         }}>
-        {/* 1 */}
+        {/* 1 : NotImportantButUrgent */}
         <View
           style={{
             flex: 1,
-            backgroundColor: 'red',
-          }}></View>
+            backgroundColor: '#FCBF08',
+          }}>
+          {/* Title  */}
+          <View
+            style={{
+              backgroundColor: 'white',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                padding: 2,
+              }}>
+              Not important but urgent
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                setselectedList('NotImportantButUrgent');
+                setaddElementDialog(true);
+              }}>
+              <Text
+                style={{
+                  backgroundColor: 'green',
+                  height: 20,
+                  width: 20,
+                  borderRadius: 10,
+                  textAlign: 'center',
+                  color: 'white',
+                }}>
+                +
+              </Text>
+            </TouchableOpacity>
+          </View>
+          {/* List of items  */}
+          <FlatList
+            data={NotImportantButUrgent}
+            keyExtractor={(item, index) => index}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    Alert.alert(item.title, item.description, [
+                      {
+                        text: 'cancel',
+                      },
+                      {
+                        text: 'delete',
+                        onPress: () => {
+                          setNotImportantButUrgent((prevList) => {
+                            return prevList.filter((elm) => elm != item);
+                          });
+                        },
+                      },
+                    ]);
+                  }}
+                  style={{
+                    padding: 5,
+                    marginVertical: 2,
+                  }}>
+                  <Text> {item.title} </Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
 
         {/* 2 */}
         <View
