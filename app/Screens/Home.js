@@ -51,21 +51,22 @@ export default function Home() {
     <View
       style={{
         flex: 1,
-        borderWidth: 0.5,
+        backgroundColor: '#ecf0f1',
+        margin: 4,
       }}>
       {/* TOP -  */}
       <View
         style={{
           flex: 1,
-          backgroundColor: 'red',
           flexDirection: 'row',
+          marginVertical: 4,
         }}>
         {/* 1 : ImportantAndUrgent */}
         <View
           style={{
             flex: 1,
             backgroundColor: '#ACCE23',
-            borderRightWidth: 0.5,
+            marginHorizontal: 2,
           }}>
           {/* Title  */}
           <View
@@ -125,7 +126,16 @@ export default function Home() {
                     padding: 5,
                     marginVertical: 2,
                   }}>
-                  <Text> {item.title} </Text>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: 18,
+                      textAlign: 'left',
+                    }}>
+                    {' '}
+                    {item.title}{' '}
+                  </Text>
                 </TouchableOpacity>
               );
             }}
@@ -138,6 +148,7 @@ export default function Home() {
           style={{
             flex: 1,
             backgroundColor: '#00B1D5',
+            marginHorizontal: 2,
           }}>
           {/* Title  */}
           <View
@@ -197,7 +208,16 @@ export default function Home() {
                     padding: 5,
                     marginVertical: 2,
                   }}>
-                  <Text> {item.title} </Text>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: 18,
+                      textAlign: 'left',
+                    }}>
+                    {' '}
+                    {item.title}{' '}
+                  </Text>
                 </TouchableOpacity>
               );
             }}
@@ -209,7 +229,6 @@ export default function Home() {
       <View
         style={{
           flex: 1,
-          backgroundColor: 'red',
           flexDirection: 'row',
         }}>
         {/* 1 : NotImportantButUrgent */}
@@ -217,7 +236,7 @@ export default function Home() {
           style={{
             flex: 1,
             backgroundColor: '#FCBF08',
-            borderRightWidth: 0.5,
+            marginHorizontal: 2,
           }}>
           {/* Title  */}
           <View
@@ -277,7 +296,16 @@ export default function Home() {
                     padding: 5,
                     marginVertical: 2,
                   }}>
-                  <Text> {item.title} </Text>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: 18,
+                      textAlign: 'left',
+                    }}>
+                    {' '}
+                    {item.title}{' '}
+                  </Text>
                 </TouchableOpacity>
               );
             }}
@@ -290,6 +318,7 @@ export default function Home() {
           style={{
             flex: 1,
             backgroundColor: '#F13B47',
+            marginHorizontal: 2,
           }}>
           {/* Title  */}
           <View
@@ -349,7 +378,16 @@ export default function Home() {
                     padding: 5,
                     marginVertical: 2,
                   }}>
-                  <Text> {item.title} </Text>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: 18,
+                      textAlign: 'left',
+                    }}>
+                    {' '}
+                    {item.title}{' '}
+                  </Text>
                 </TouchableOpacity>
               );
             }}
