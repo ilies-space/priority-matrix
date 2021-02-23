@@ -7,6 +7,7 @@ import {
   Button,
   Alert,
 } from 'react-native';
+import AddElement from '../Componenets/AddElement';
 
 export default function Home() {
   // variables  :
@@ -15,7 +16,8 @@ export default function Home() {
   const [ImportantButNotUrgent, setImportantButNotUrgent] = useState([]);
   const [NotImportantButUrgent, setNotImportantButUrgent] = useState([]);
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
-
+  // --------------  Components
+  const [addElementDialog, setaddElementDialog] = useState(true);
   return (
     <View
       style={{
@@ -138,6 +140,9 @@ export default function Home() {
             backgroundColor: 'yellow',
           }}></View>
       </View>
+
+      {/* // add new element to list  */}
+      {addElementDialog ? <AddElement /> : <View />}
     </View>
   );
 }
