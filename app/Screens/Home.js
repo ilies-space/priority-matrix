@@ -1,12 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Button,
-  Alert,
-} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import AddElement from '../Componenets/AddElement';
 import {
