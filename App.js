@@ -8,8 +8,54 @@ export default function App() {
   const [NotImportantButUrgent, setNotImportantButUrgent] = useState([]);
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
   return (
-    <View>
-      <Text>HOME</Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'gray',
+      }}>
+      {/* TOP -  */}
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'red',
+          flexDirection: 'row',
+        }}>
+        {/* 1 */}
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'pink',
+          }}></View>
+
+        {/* 2 */}
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'black',
+          }}></View>
+      </View>
+
+      {/* Bottom -  */}
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'red',
+          flexDirection: 'row',
+        }}>
+        {/* 1 */}
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'red',
+          }}></View>
+
+        {/* 2 */}
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'yellow',
+          }}></View>
+      </View>
     </View>
   );
 }
