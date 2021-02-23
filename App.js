@@ -5,5 +5,11 @@ import {PersistGate} from 'redux-persist/es/integration/react';
 import store, {peristedStore} from './app/Redux/store';
 
 export default function App() {
-  return <Home />;
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={peristedStore} loading={null}>
+        <Home />
+      </PersistGate>
+    </Provider>
+  );
 }

@@ -1,10 +1,10 @@
 import {combineReducers, createStore} from 'redux';
 import {persistReducer, persistStore} from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
-import TodoListReducer from './TodoListReducer';
+import ListsReducer from './ListsReducer';
 
 const AppReducers = combineReducers({
-  TodoListReducer,
+  ListsReducer,
 });
 
 const rootReducer = (state, action) => {
@@ -14,7 +14,7 @@ const rootReducer = (state, action) => {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['TodoListReducer'],
+  whitelist: ['ListsReducer'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

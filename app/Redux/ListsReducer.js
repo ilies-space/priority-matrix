@@ -11,7 +11,7 @@ const initialState = {
   ArchivedListPassword: '0000',
 };
 
-const TodoListReducer = (state = initialState, action) => {
+const ListsReducer = (state = initialState, action) => {
   switch (action.type) {
     case changeTodoItemState:
       state.toDoList.forEach((elm) => {
@@ -84,4 +84,4 @@ const TodoListReducer = (state = initialState, action) => {
   }
 };
 
-export default TodoListReducer;
+export default ListsReducer;
