@@ -68,12 +68,6 @@ export default function Home() {
         backgroundColor: '#ecf0f1',
         margin: 4,
       }}>
-      <Button
-        title={'test'}
-        onPress={() => {
-          console.log('TEST', ListsReducer);
-        }}
-      />
       {/* TOP -  */}
       <View
         style={{
