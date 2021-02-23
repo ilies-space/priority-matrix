@@ -18,6 +18,14 @@ export default function Home() {
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
   // --------------  Components
   const [addElementDialog, setaddElementDialog] = useState(false);
+
+  // Functions
+  function addToImportantAndUrgent(newElement) {
+    setImportantAndUrgent((prevList) => {
+      return [newElement, ...prevList];
+    });
+  }
+
   return (
     <View
       style={{
@@ -55,16 +63,6 @@ export default function Home() {
               onPress={() => {
                 console.log('add new element');
                 setaddElementDialog(true);
-                setImportantAndUrgent((prevList) => {
-                  return [
-                    {
-                      title: 'Task from user',
-                      description:
-                        'Occaecat ea tempor consequat magna nulla quis aliquip proident tempor do laborum deserunt.',
-                    },
-                    ...prevList,
-                  ];
-                });
               }}>
               <Text
                 style={{
@@ -144,7 +142,10 @@ export default function Home() {
 
       {/* // add new element to list  */}
       {addElementDialog ? (
-        <AddElement setaddElementDialog={setaddElementDialog} />
+        <AddElement
+          addToImportantAndUrgent={addToImportantAndUrgent}
+          setaddElementDialog={setaddElementDialog}
+        />
       ) : (
         <View />
       )}

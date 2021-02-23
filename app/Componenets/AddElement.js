@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 
-export default function AddElement({setaddElementDialog}) {
+export default function AddElement({
+  setaddElementDialog,
+  addToImportantAndUrgent,
+}) {
   const [Title, setTitle] = useState('');
   const [description, setdescription] = useState('');
   return (
@@ -38,10 +41,15 @@ export default function AddElement({setaddElementDialog}) {
 
         <TouchableOpacity
           onPress={() => {
-            console.log({
+            // console.log({
+            //   title: Title,
+            //   description: description,
+            // });
+            addToImportantAndUrgent({
               title: Title,
               description: description,
             });
+            setaddElementDialog(false);
           }}>
           <View
             style={{
