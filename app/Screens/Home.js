@@ -102,7 +102,7 @@ export default function Home() {
           {/* List of items  */}
           <FlatList
             data={ImportantAndUrgent}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
@@ -174,7 +174,7 @@ export default function Home() {
           {/* List of items  */}
           <FlatList
             data={ImportantButNotUrgent}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
@@ -254,7 +254,7 @@ export default function Home() {
           {/* List of items  */}
           <FlatList
             data={NotImportantButUrgent}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
@@ -326,7 +326,7 @@ export default function Home() {
           {/* List of items  */}
           <FlatList
             data={NotImportantAndNotUrgent}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
