@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, Button} from 'react-native';
 
 export default function App() {
   // variables  :
@@ -34,13 +34,32 @@ export default function App() {
             backgroundColor: 'pink',
           }}>
           {/* Title  */}
-          <View style={{backgroundColor: 'white'}}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}>
             <Text
               style={{
                 padding: 2,
               }}>
               Important and urgent
             </Text>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  backgroundColor: 'green',
+                  height: 20,
+                  width: 20,
+                  borderRadius: 10,
+                  textAlign: 'center',
+                  color: 'white',
+                }}>
+                +
+              </Text>
+            </TouchableOpacity>
           </View>
           {/* List of items  */}
           <FlatList
