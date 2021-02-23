@@ -18,12 +18,33 @@ export default function Home() {
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
   // --------------  Components
   const [addElementDialog, setaddElementDialog] = useState(false);
+  // --------------  handlers
+  const [selectedList, setselectedList] = useState('ImportantAndUrgent');
 
   // Functions
   function addToImportantAndUrgent(newElement) {
-    setImportantAndUrgent((prevList) => {
-      return [newElement, ...prevList];
-    });
+    switch (selectedList) {
+      case 'ImportantAndUrgent':
+        setImportantAndUrgent((prevList) => {
+          return [newElement, ...prevList];
+        });
+        break;
+      case 'ImportantButNotUrgent':
+        setImportantButNotUrgent((prevList) => {
+          return [newElement, ...prevList];
+        });
+        break;
+      case 'NotImportantButUrgent':
+        setNotImportantButUrgent((prevList) => {
+          return [newElement, ...prevList];
+        });
+        break;
+      case 'NotImportantAndNotUrgent':
+        setNotImportantAndNotUrgent((prevList) => {
+          return [newElement, ...prevList];
+        });
+        break;
+    }
   }
 
   return (
