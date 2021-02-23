@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {Component, useState} from 'react';
 import {
   View,
   Text,
@@ -10,21 +10,12 @@ import {
 
 export default function Home() {
   // variables  :
-  const [ImportantAndUrgent, setImportantAndUrgent] = useState([
-    {
-      title: 'task exmple',
-      description:
-        'Minim laborum esse anim nostrud deserunt eiusmod mollit magna non occaecat eu deserunt elit.',
-    },
-    {
-      title: 'task exmple2',
-      description:
-        '2 Minim laborum esse anim nostrud deserunt eiusmod mollit magna non occaecat eu deserunt elit.',
-    },
-  ]);
+  // -------------- Lists
+  const [ImportantAndUrgent, setImportantAndUrgent] = useState([]);
   const [ImportantButNotUrgent, setImportantButNotUrgent] = useState([]);
   const [NotImportantButUrgent, setNotImportantButUrgent] = useState([]);
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
+
   return (
     <View
       style={{
