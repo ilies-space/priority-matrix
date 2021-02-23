@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 
-export default function AddElement() {
+export default function AddElement({setaddElementDialog}) {
   return (
     <View
       style={{
@@ -21,6 +21,12 @@ export default function AddElement() {
       />
       <View style={{backgroundColor: 'white'}}>
         <Text>ADD NEW ELEMENT</Text>
+        <TouchableOpacity
+          onPress={() => {
+            setaddElementDialog(false);
+          }}>
+          <Text>Close</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

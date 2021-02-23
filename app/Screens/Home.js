@@ -17,7 +17,7 @@ export default function Home() {
   const [NotImportantButUrgent, setNotImportantButUrgent] = useState([]);
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
   // --------------  Components
-  const [addElementDialog, setaddElementDialog] = useState(true);
+  const [addElementDialog, setaddElementDialog] = useState(false);
   return (
     <View
       style={{
@@ -54,6 +54,7 @@ export default function Home() {
             <TouchableOpacity
               onPress={() => {
                 console.log('add new element');
+                setaddElementDialog(true);
                 setImportantAndUrgent((prevList) => {
                   return [
                     {
@@ -142,7 +143,11 @@ export default function Home() {
       </View>
 
       {/* // add new element to list  */}
-      {addElementDialog ? <AddElement /> : <View />}
+      {addElementDialog ? (
+        <AddElement setaddElementDialog={setaddElementDialog} />
+      ) : (
+        <View />
+      )}
     </View>
   );
 }
