@@ -51,7 +51,7 @@ export default function Home() {
     <View
       style={{
         flex: 1,
-        backgroundColor: 'gray',
+        borderWidth: 0.5,
       }}>
       {/* TOP -  */}
       <View
@@ -65,6 +65,7 @@ export default function Home() {
           style={{
             flex: 1,
             backgroundColor: '#ACCE23',
+            borderRightWidth: 0.5,
           }}>
           {/* Title  */}
           <View
@@ -76,9 +77,9 @@ export default function Home() {
             }}>
             <Text
               style={{
-                padding: 2,
+                padding: 5,
               }}>
-              Important and urgent
+              Important & urgent
             </Text>
             <TouchableOpacity
               onPress={() => {
@@ -87,7 +88,7 @@ export default function Home() {
               }}>
               <Text
                 style={{
-                  backgroundColor: 'green',
+                  backgroundColor: '#2c3e50',
                   height: 20,
                   width: 20,
                   borderRadius: 10,
@@ -148,7 +149,7 @@ export default function Home() {
             }}>
             <Text
               style={{
-                padding: 2,
+                padding: 5,
               }}>
               Important but not urgent
             </Text>
@@ -159,7 +160,7 @@ export default function Home() {
               }}>
               <Text
                 style={{
-                  backgroundColor: 'green',
+                  backgroundColor: '#2c3e50',
                   height: 20,
                   width: 20,
                   borderRadius: 10,
@@ -216,6 +217,7 @@ export default function Home() {
           style={{
             flex: 1,
             backgroundColor: '#FCBF08',
+            borderRightWidth: 0.5,
           }}>
           {/* Title  */}
           <View
@@ -227,7 +229,7 @@ export default function Home() {
             }}>
             <Text
               style={{
-                padding: 2,
+                padding: 5,
               }}>
               Not important but urgent
             </Text>
@@ -238,7 +240,7 @@ export default function Home() {
               }}>
               <Text
                 style={{
-                  backgroundColor: 'green',
+                  backgroundColor: '#2c3e50',
                   height: 20,
                   width: 20,
                   borderRadius: 10,
@@ -299,9 +301,9 @@ export default function Home() {
             }}>
             <Text
               style={{
-                padding: 2,
+                padding: 5,
               }}>
-              Not important and not urgent
+              Not important & not urgent
             </Text>
             <TouchableOpacity
               onPress={() => {
@@ -310,7 +312,7 @@ export default function Home() {
               }}>
               <Text
                 style={{
-                  backgroundColor: 'green',
+                  backgroundColor: '#2c3e50',
                   height: 20,
                   width: 20,
                   borderRadius: 10,
