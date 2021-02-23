@@ -282,12 +282,77 @@ export default function Home() {
           />
         </View>
 
-        {/* 2 */}
+        {/* 2 NotImportantAndNotUrgent */}
+
         <View
           style={{
             flex: 1,
-            backgroundColor: 'yellow',
-          }}></View>
+            backgroundColor: '#F13B47',
+          }}>
+          {/* Title  */}
+          <View
+            style={{
+              backgroundColor: 'white',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                padding: 2,
+              }}>
+              Not important and not urgent
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                setselectedList('NotImportantAndNotUrgent');
+                setaddElementDialog(true);
+              }}>
+              <Text
+                style={{
+                  backgroundColor: 'green',
+                  height: 20,
+                  width: 20,
+                  borderRadius: 10,
+                  textAlign: 'center',
+                  color: 'white',
+                }}>
+                +
+              </Text>
+            </TouchableOpacity>
+          </View>
+          {/* List of items  */}
+          <FlatList
+            data={NotImportantAndNotUrgent}
+            keyExtractor={(item, index) => index}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    Alert.alert(item.title, item.description, [
+                      {
+                        text: 'cancel',
+                      },
+                      {
+                        text: 'delete',
+                        onPress: () => {
+                          setNotImportantAndNotUrgent((prevList) => {
+                            return prevList.filter((elm) => elm != item);
+                          });
+                        },
+                      },
+                    ]);
+                  }}
+                  style={{
+                    padding: 5,
+                    marginVertical: 2,
+                  }}>
+                  <Text> {item.title} </Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
       </View>
 
       {/* // add new element to list  */}
