@@ -86,6 +86,14 @@ export default function App() {
                         {
                           text: 'cancel',
                         },
+                        {
+                          text: 'delete',
+                          onPress: () => {
+                            setImportantAndUrgent((prevList) => {
+                              return prevList.filter((elm) => elm != item);
+                            });
+                          },
+                        },
                       ],
                     );
                   }}
