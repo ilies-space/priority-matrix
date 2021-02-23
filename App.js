@@ -1,9 +1,16 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 
 export default function App() {
   // variables  :
-  const [ImportantAndUrgent, setImportantAndUrgent] = useState([]);
+  const [ImportantAndUrgent, setImportantAndUrgent] = useState([
+    {
+      title: 'task exmple',
+    },
+    {
+      title: 'task exmple2',
+    },
+  ]);
   const [ImportantButNotUrgent, setImportantButNotUrgent] = useState([]);
   const [NotImportantButUrgent, setNotImportantButUrgent] = useState([]);
   const [NotImportantAndNotUrgent, setNotImportantAndNotUrgent] = useState([]);
@@ -20,12 +27,38 @@ export default function App() {
           backgroundColor: 'red',
           flexDirection: 'row',
         }}>
-        {/* 1 */}
+        {/* 1 : ImportantAndUrgent */}
         <View
           style={{
             flex: 1,
             backgroundColor: 'pink',
-          }}></View>
+          }}>
+          {/* Title  */}
+          <View style={{backgroundColor: 'white'}}>
+            <Text
+              style={{
+                padding: 2,
+              }}>
+              Important and urgent
+            </Text>
+          </View>
+          {/* List of items  */}
+          <FlatList
+            data={ImportantAndUrgent}
+            keyExtractor={(item, index) => index}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity
+                  style={{
+                    padding: 5,
+                    marginVertical: 2,
+                  }}>
+                  <Text> {item.title} </Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
 
         {/* 2 */}
         <View
