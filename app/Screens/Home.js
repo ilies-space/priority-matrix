@@ -64,7 +64,7 @@ export default function Home() {
         <View
           style={{
             flex: 1,
-            backgroundColor: 'pink',
+            backgroundColor: '#ACCE23',
           }}>
           {/* Title  */}
           <View
@@ -82,7 +82,7 @@ export default function Home() {
             </Text>
             <TouchableOpacity
               onPress={() => {
-                console.log('add new element');
+                setselectedList('ImportantAndUrgent');
                 setaddElementDialog(true);
               }}>
               <Text
@@ -131,12 +131,77 @@ export default function Home() {
           />
         </View>
 
-        {/* 2 */}
+        {/* 2 : ImportantButNotUrgent*/}
+
         <View
           style={{
             flex: 1,
-            backgroundColor: 'black',
-          }}></View>
+            backgroundColor: '#00B1D5',
+          }}>
+          {/* Title  */}
+          <View
+            style={{
+              backgroundColor: 'white',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                padding: 2,
+              }}>
+              Important but not urgent
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                setselectedList('ImportantButNotUrgent');
+                setaddElementDialog(true);
+              }}>
+              <Text
+                style={{
+                  backgroundColor: 'green',
+                  height: 20,
+                  width: 20,
+                  borderRadius: 10,
+                  textAlign: 'center',
+                  color: 'white',
+                }}>
+                +
+              </Text>
+            </TouchableOpacity>
+          </View>
+          {/* List of items  */}
+          <FlatList
+            data={ImportantButNotUrgent}
+            keyExtractor={(item, index) => index}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    Alert.alert(item.title, item.description, [
+                      {
+                        text: 'cancel',
+                      },
+                      {
+                        text: 'delete',
+                        onPress: () => {
+                          setImportantButNotUrgent((prevList) => {
+                            return prevList.filter((elm) => elm != item);
+                          });
+                        },
+                      },
+                    ]);
+                  }}
+                  style={{
+                    padding: 5,
+                    marginVertical: 2,
+                  }}>
+                  <Text> {item.title} </Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
       </View>
 
       {/* Bottom -  */}
