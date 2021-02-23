@@ -40,22 +40,25 @@ export default function AddElement({
         />
 
         <TouchableOpacity
+          disabled={Title.length <= 0}
           onPress={() => {
             // console.log({
             //   title: Title,
             //   description: description,
             // });
-            addToImportantAndUrgent({
-              title: Title,
-              description: description,
-            });
-            setaddElementDialog(false);
+            if (Title.length > 0) {
+              addToImportantAndUrgent({
+                title: Title,
+                description: description,
+              });
+              setaddElementDialog(false);
+            }
           }}>
           <View
             style={{
               height: 30,
               width: 70,
-              backgroundColor: 'green',
+              backgroundColor: Title.length <= 0 ? 'gray' : 'green',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
