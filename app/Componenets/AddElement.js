@@ -1,12 +1,13 @@
-import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 
 export default function AddElement({setaddElementDialog}) {
+  const [Title, setTitle] = useState('');
+  const [description, setdescription] = useState('');
   return (
     <View
       style={{
         position: 'absolute',
-        backgroundColor: 'orange',
         height: '100%',
         width: '100%',
       }}>
@@ -20,12 +21,63 @@ export default function AddElement({setaddElementDialog}) {
         }}
       />
       <View style={{backgroundColor: 'white'}}>
-        <Text>ADD NEW ELEMENT</Text>
+        <TextInput
+          value={Title}
+          onChangeText={(input) => {
+            setTitle(input);
+          }}
+          placeholder={'TITLE'}
+        />
+        <TextInput
+          value={description}
+          onChangeText={(input) => {
+            setdescription(input);
+          }}
+          placeholder={'Description'}
+        />
+
+        <TouchableOpacity
+          onPress={() => {
+            console.log({
+              title: Title,
+              description: description,
+            });
+          }}>
+          <View
+            style={{
+              height: 30,
+              width: 70,
+              backgroundColor: 'green',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                color: 'white',
+              }}>
+              ADD
+            </Text>
+          </View>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             setaddElementDialog(false);
           }}>
-          <Text>Close</Text>
+          <View
+            style={{
+              height: 30,
+              width: 70,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderWidth: 0.5,
+            }}>
+            <Text
+              style={{
+                color: 'black',
+              }}>
+              Close
+            </Text>
+          </View>
         </TouchableOpacity>
       </View>
     </View>
