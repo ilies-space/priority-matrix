@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, FlatList, TouchableOpacity, Button} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Button,
+  Alert,
+} from 'react-native';
 
 export default function App() {
   // variables  :
@@ -47,7 +54,10 @@ export default function App() {
               }}>
               Important and urgent
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                console.log('add new element');
+              }}>
               <Text
                 style={{
                   backgroundColor: 'green',
@@ -68,6 +78,17 @@ export default function App() {
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
+                  onPress={() => {
+                    Alert.alert(
+                      item.title,
+                      'Nostrud esse ullamco labore sunt proident voluptate cillum dolore voluptate officia excepteur consequat consequat.',
+                      [
+                        {
+                          text: 'cancel',
+                        },
+                      ],
+                    );
+                  }}
                   style={{
                     padding: 5,
                     marginVertical: 2,
